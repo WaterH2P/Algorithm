@@ -36,4 +36,3 @@ for k in range(n) :
         matrix.append(nums)
     maxCount = calMaxMatrix(matrix, 0, col, 0, row)
     print(maxCount)
-

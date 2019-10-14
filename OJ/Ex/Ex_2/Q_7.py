@@ -86,6 +86,7 @@ for k in range(n) :
     strJoinLists = []
     for arrT in joinLists :
         strOutput = ' '.join([str(x) for x in arrT])
+        strJoinLists.append(strOutput)
     strJoinLists.sort()
     for strOutput in strJoinLists :
         print(strOutput)
