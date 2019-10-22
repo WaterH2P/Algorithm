@@ -17,4 +17,4 @@ with open('./test_open.txt', 'r', encoding='utf-8') as f:
         line = f.readline().strip()
 
 with open('./test_open.txt', 'a', encoding='utf-8') as f:
-    f.write('Hello World\n')
+    f.write('Hello World\n').strip()
