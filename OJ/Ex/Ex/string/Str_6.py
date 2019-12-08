@@ -20,7 +20,7 @@ for _ in range(int(input().strip())):
             strs.pop(i)
             i -= 1
         i += 1
-
+    
     if len(oneChar) == 1 and len(strs) == 0:
         print('1')
         continue
