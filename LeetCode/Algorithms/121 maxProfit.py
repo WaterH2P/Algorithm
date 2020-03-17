@@ -13,6 +13,7 @@ class Solution:
                 prices[1] = prices[i] - prices[0]
         return prices[1]
 
-s = Solution()
-prices = [1]
-print( s.maxProfit(prices) )
+if __name__ == '__main__':
+    s = Solution()
+    prices = [1]
+    print( s.maxProfit(prices) )

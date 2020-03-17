@@ -9,5 +9,6 @@ class Solution:
                 i -= 1
             i += 1
         
-            
-                
+
+if __name__ == '__main__':
+    s = Solution()            
