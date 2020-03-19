@@ -31,6 +31,8 @@ class Solution:
                 maxTotal = total
         return maxTotal
 
-s = Solution()
-tree = [3,3,3,1,2,1,1,2,3,3,4]
-print( s.totalFruit(tree) )
+
+if __name__ == '__main__':
+    s = Solution()
+    tree = [3,3,3,1,2,1,1,2,3,3,4]
+    print( s.totalFruit(tree) )
