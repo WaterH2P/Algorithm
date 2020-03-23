@@ -1,3 +1,7 @@
+# 【中等】3. lengthOfLongestSubstring
+# https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
+# 给定一个字符串，请你找出其中不含有重复字符的最长子串的长度。
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         l, r = 0, 1
@@ -21,7 +25,6 @@ class Solution:
         return len(maxS)
 
 
-# https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
 if __name__ == '__main__':
     s = Solution()
     result = s.lengthOfLongestSubstring('bbtablud')
