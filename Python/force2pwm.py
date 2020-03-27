@@ -11,14 +11,14 @@ def pwm2force2(val):
     return (val - 1000) / (2000 - 1000) * (19.6 - 0)
 
 if __name__ == '__main__':
-    force = 20.14
+    force = 22.09
     print(force2pwm(force))
 
     force2 = 6.45
     print(force2pwm2(force2))
 
-    pwm = 1620
+    pwm = 1660
     print(pwm2force(pwm))
 
-    pwm2 = 1330
+    pwm2 = 1450
     print(pwm2force2(pwm2))
