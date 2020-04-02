@@ -13,6 +13,27 @@ def BatchGradientDescentRespectively(xs, ys, a) -> list:
     return K
 
 
+# 根据代价函数逐个更新 K
+# 对 xs 范围进行缩放
+def BatchGradientDescentRespectively2(xs, ys, a) -> list:
+    for j in range(len(xs[0])):
+        aveX, maxX, minX = 0, -float('inf'), float('inf')
+        for i in range(len(xs)):
+            aveX += xs[i][j]
+            if xs[i][j] > maxX: maxX = xs[i][j]
+            if xs[i][j] < minX: minX = xs[i][j]
+        aveX /= len(xs)
+        for i in range(len(xs)): xs[i][j] = (xs[i][j] - aveX) / (maxX - minX)
+    xs = [[1, *x] for x in xs]
+    m, n = len(xs), len(xs[0])
+    K, PDs = [0] * n, [float('inf')] * n
+    while max(map(abs, PDs)) > 0.000001:
+        Error = [sum([K[j] * xs[i][j] for j in range(n)]) - ys[i] for i in range(m)]
+        PDs = [sum([Error[i] * xs[i][j] for i in range(m)]) * a / m for j in range(n)]
+        K = [K[i] - PDs[i] for i in range(n)]
+    return K
+
+
 # 矩阵计算梯度下降
 def BatchGradientDescentByVector(xs, ys, a) -> list:
     m = len(xs)
@@ -31,4 +52,11 @@ if __name__ == "__main__":
     xs = [[1], [2], [3], [4], [5], [6]]
     ys = [2, 4, 6, 8, 10, 12]
     print(BatchGradientDescentRespectively(xs, ys, a))
+
+    xs = [[1], [2], [3], [4], [5], [6]]
+    ys = [2, 4, 6, 8, 10, 12]
+    print(BatchGradientDescentRespectively2(xs, ys, a))
+    
+    xs = [[1], [2], [3], [4], [5], [6]]
+    ys = [2, 4, 6, 8, 10, 12]
     print(BatchGradientDescentByVector(xs, ys, a))
