@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Rect</title>
+    <style type="text/css">
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id='myCanvas' width="300" height="300"></canvas>
+    <script>
+        function draw () {
+            let canvas = document.getElementById('myCanvas');
+            if (!canvas.getContext) return;
+            let ctx = canvas.getContext('2d');
+            ctx.font = '40px sans-serif';
+            ctx.fillText('天若有情', 50, 50);
+            ctx.strokeText('天若有情', 50, 100);
+        }
+        draw();
+    </script>
+</body>
+</html>

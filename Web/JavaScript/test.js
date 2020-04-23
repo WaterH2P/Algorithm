@@ -18,3 +18,7 @@ let {test1, test2} = k
 s = {...k, test1, a}
 console.log(test1)
 console.log(s)
+
+f()
+
+function f () { console.log('as') }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Rect</title>
+    <style type="text/css">
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id='myCanvas' width="300" height="300"></canvas>
+    <script>
+        function draw () {
+            let canvas = document.getElementById('myCanvas');
+            if (!canvas.getContext) {
+                console.log('该浏览器不支持 Canvas getContext.');
+            };
+            let ctx = canvas.getContext('2d');
+            // line style
+            let lineCaps = ['butt', 'round', 'square'];
+            for (let i = 0; i < lineCaps.length; i++) {
+                ctx.beginPath();
+                ctx.moveTo(20 + 30 * i, 20);
+                ctx.lineTo(20 + 30 * i, 100);
+                ctx.lineWidth = 20;
+                ctx.lineCap = lineCaps[i];
+                ctx.stroke();
+            }
+            ctx.beginPath();
+            ctx.moveTo(0, 20);
+            ctx.lineTo(120, 20);
+
+            ctx.moveTo(0, 100);
+            ctx.lineTo(120, 100);
+
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = 'red';
+            ctx.stroke();
+        }
+        draw();
+    </script>
+</body>
+</html>
