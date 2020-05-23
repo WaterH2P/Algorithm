@@ -21,3 +21,6 @@ console.log(Number.EPSILON.toFixed(20))
 console.log('\nNumber.isSafeInteger')
 console.log(Number.isSafeInteger(9007199254740993))
 console.log(Number.isSafeInteger(9007199254740993 - 900))
+
+let a = 3;
+console.log(a ** 2)
