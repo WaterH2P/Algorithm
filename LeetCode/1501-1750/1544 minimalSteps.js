@@ -66,6 +66,9 @@ var minimalSteps = function(maze) {
     }
   }
 
+  console.log(Ms);
+  console.log(Os);
+
   if (Ms.length === 0) { return findMinSteps(S, T); }
   else {
     const path = (from = {}, to = {}) => `(${from.x},${from.y}) to (${to.x},${to.y})`;
@@ -76,9 +79,13 @@ var minimalSteps = function(maze) {
       for (let O of Os) {
         const minSO = findMinSteps(S, O);
         const minOM = findMinSteps(O, M);
-        mem[path(S, M)] = minOM > 0 && minOM > 0 ? minSO + minOM : -1;
-        if (mem[path(S, M)] === -1) { return -1; }
+        if (minOM > 0 && minOM > 0) {
+          if (!mem[path(S, M)] || mem[path(S, M)] === -1) { mem[path(S, M)] = minSO + minOM; }
+          else if (minSO + minOM < mem[path(S, M)]) { mem[path(S, M)] = minSO + minOM; }
+        }
+        else if (!mem[path(S, M)]) { mem[path(S, M)] = -1; }
       }
+      if (mem[path(S, M)] === -1) { return -1; }
     }
     // 找到 M 到每个不同 M 的最短路径长度
     for (let M1 of Ms) {
@@ -89,8 +96,8 @@ var minimalSteps = function(maze) {
             const minOM2 = findMinSteps(O, M2);
             mem[path(M1, M2)] = minM1O > 0 && minOM2 > 0 ? minM1O + minOM2 : -1;
             mem[path(M2, M1)] = mem[path(M1, M2)];
-            if (mem[path(M1, M2)] === -1) { return -1; }
           }
+          if (mem[path(M1, M2)] === -1) { return -1; }
         }
       }
     }
@@ -107,7 +114,7 @@ var minimalSteps = function(maze) {
     let dp = {};
     const dpKey = (cur = {}, MState = []) => `(${cur.x},${cur.y}):${MState.join('')}`;
     function dfs(cur = {}, MState = [], steps, nodes = []) {
-      if (!MState.includes(0)) {
+      if (!MState.includes(0) && false) {
         console.log(nodes);
         console.log(steps);
         // console.log(dp[dpKey(cur, MState)]);
@@ -118,15 +125,15 @@ var minimalSteps = function(maze) {
         let minLen = Number.MAX_SAFE_INTEGER;
         if (MState.includes(0)) {
           for (let i = 0; i < MState.length; i++) {
-            if (MState[i] === 0) {
-              // if (nodes.length === 4) {
-              //   console.log(nodes);
-              //   console.log(MState);
-              //   console.log(Ms[i]);
-              //   console.log(steps);
-              //   console.log(dp);
-              //   console.log();
-              // }
+            if (MState[i] === 0 && false) {
+              if (nodes.length === 4) {
+                console.log(nodes);
+                console.log(MState);
+                console.log(Ms[i]);
+                console.log(steps);
+                console.log(dp);
+                console.log();
+              }
               let MStateTmp = Object.assign([], MState);
               MStateTmp[i] = 1;
               let minLenTmp = dfs(Ms[i], MStateTmp, steps + mem[path(cur, Ms[i])], [...nodes, cur]) + mem[path(cur, Ms[i])];
